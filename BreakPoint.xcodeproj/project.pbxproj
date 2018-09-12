@@ -21,6 +21,7 @@
 		F9B2F8CC2149313600E4FC6D /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B2F8CB2149313600E4FC6D /* InsetTextField.swift */; };
 		F9B2F8CE214934EE00E4FC6D /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B2F8CD214934EE00E4FC6D /* ShadowView.swift */; };
 		F9B2F8D0214948A800E4FC6D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B2F8CF214948A800E4FC6D /* AuthService.swift */; };
+		F9B2F8D22149658500E4FC6D /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B2F8D12149658500E4FC6D /* MeVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		F9B2F8CB2149313600E4FC6D /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
 		F9B2F8CD214934EE00E4FC6D /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		F9B2F8CF214948A800E4FC6D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		F9B2F8D12149658500E4FC6D /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,10 +78,11 @@
 		F9217BCF2148F5400021CF67 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F99250D22148F23200D3E432 /* FeedVC.swift */,
-				F99250D42148F23200D3E432 /* GroupsVC.swift */,
 				F9B2F8C7214930A600E4FC6D /* AuthVC.swift */,
 				F9B2F8C9214930E200E4FC6D /* LoginVC.swift */,
+				F99250D22148F23200D3E432 /* FeedVC.swift */,
+				F99250D42148F23200D3E432 /* GroupsVC.swift */,
+				F9B2F8D12149658500E4FC6D /* MeVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9B2F8D22149658500E4FC6D /* MeVC.swift in Sources */,
 				F9B2F8C8214930A600E4FC6D /* AuthVC.swift in Sources */,
 				F99250D52148F23200D3E432 /* GroupsVC.swift in Sources */,
 				F9B2F8CA214930E200E4FC6D /* LoginVC.swift in Sources */,

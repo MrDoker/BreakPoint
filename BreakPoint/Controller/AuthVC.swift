@@ -13,7 +13,16 @@ class AuthVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func facebookSignInBtnWasPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func googleSignInBtnWasPressed(_ sender: Any) {
+        
+    }
+    
+    
+    
 }
