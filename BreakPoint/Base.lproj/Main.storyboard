@@ -532,7 +532,7 @@
                                     </textField>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eLv-us-SQI">
                                         <rect key="frame" x="0.0" y="223.5" width="335" height="333.5"/>
-                                        <color key="backgroundColor" red="0.1450980392" green="0.14901960780000001" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.21960784310000001" green="0.23921568630000001" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCell" rowHeight="60" id="R41-3o-mr8" customClass="UserTableViewCell" customModule="BreakPoint" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="335" height="60"/>
@@ -648,17 +648,55 @@
                                     <constraint firstAttribute="trailing" secondItem="I1S-gV-tzV" secondAttribute="trailing" constant="20" id="vNX-eS-fCM"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8ts-fT-bvn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8ts-fT-bvn">
                                 <rect key="frame" x="0.0" y="70" width="375" height="548"/>
                                 <color key="backgroundColor" red="0.21960784310000001" green="0.23921568630000001" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="ayo-5J-ucW">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GroupCell" rowHeight="102" id="ayo-5J-ucW" customClass="GroupTableViewCell" customModule="BreakPoint" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ayo-5J-ucW" id="8cd-fj-j1Y">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="101.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Group Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="CSc-YH-JZI">
+                                                    <rect key="frame" x="30" y="37" width="338" height="25.5"/>
+                                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                                                    <color key="textColor" red="0.16862745100000001" green="0.63529411759999999" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_ members." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOU-Xv-XNn">
+                                                    <rect key="frame" x="30" y="70.5" width="338" height="17.5"/>
+                                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                                                    <color key="textColor" red="0.16862745100000001" green="0.63529411759999999" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZf-54-5Jz">
+                                                    <rect key="frame" x="8" y="8" width="359" height="21"/>
+                                                    <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
+                                                    <color key="textColor" red="0.16862745100000001" green="0.63529411759999999" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CSc-YH-JZI" firstAttribute="leading" secondItem="8cd-fj-j1Y" secondAttribute="leadingMargin" constant="15" id="0aF-Bj-e8c"/>
+                                                <constraint firstItem="kZf-54-5Jz" firstAttribute="top" secondItem="8cd-fj-j1Y" secondAttribute="top" constant="8" id="5as-uN-aaC"/>
+                                                <constraint firstAttribute="trailing" secondItem="kZf-54-5Jz" secondAttribute="trailing" constant="8" id="7EO-Nn-436"/>
+                                                <constraint firstItem="CSc-YH-JZI" firstAttribute="trailing" secondItem="8cd-fj-j1Y" secondAttribute="trailingMargin" constant="8" id="Lbd-ha-Acd"/>
+                                                <constraint firstItem="kZf-54-5Jz" firstAttribute="leading" secondItem="8cd-fj-j1Y" secondAttribute="leading" constant="8" id="Lcc-sm-GV3"/>
+                                                <constraint firstItem="DOU-Xv-XNn" firstAttribute="top" secondItem="CSc-YH-JZI" secondAttribute="bottom" constant="8" id="Pr1-Is-Sdt"/>
+                                                <constraint firstItem="DOU-Xv-XNn" firstAttribute="leading" secondItem="8cd-fj-j1Y" secondAttribute="leadingMargin" constant="15" id="XIO-Ef-aZY"/>
+                                                <constraint firstItem="CSc-YH-JZI" firstAttribute="top" secondItem="kZf-54-5Jz" secondAttribute="bottom" constant="8" id="aUa-Ig-J2P"/>
+                                                <constraint firstItem="DOU-Xv-XNn" firstAttribute="trailing" secondItem="8cd-fj-j1Y" secondAttribute="trailingMargin" constant="8" id="qnv-wM-lDh"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="DOU-Xv-XNn" secondAttribute="bottom" constant="3" id="rIO-5o-Dp1"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1450980392" green="0.14901960780000001" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="groupDescriptionLabel" destination="CSc-YH-JZI" id="RpG-zi-r9B"/>
+                                            <outlet property="groupTitleLabel" destination="kZf-54-5Jz" id="xyt-xE-sWK"/>
+                                            <outlet property="memberCountLabel" destination="DOU-Xv-XNn" id="eBI-dV-ffR"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -676,10 +714,13 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Groups" image="groups-tabIcon" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="tableView" destination="8ts-fT-bvn" id="UqE-k2-X8i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="184"/>
+            <point key="canvasLocation" x="732" y="183.95802098950526"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

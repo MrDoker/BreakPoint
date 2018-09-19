@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateGroupVC: UIViewController {
     
@@ -34,7 +35,20 @@ class CreateGroupVC: UIViewController {
     }
     
     @IBAction func doneButtonWasPressed(_ sender: Any) {
-        
+        guard let groupTitle = titleTextField.text, titleTextField.text != "",
+            let groupDescription = descriptionTextField.text, descriptionTextField.text != "" else { return }
+        DataService.instance.getIds(forUsernames: chosenUserArray) { (idsArray) in
+            var userIds = idsArray
+            userIds.append((Auth.auth().currentUser?.uid)!)
+            
+            DataService.instance.createGroup(withTitle: groupTitle, andDescription: groupDescription, forUserIds: userIds, handler: { (success) in
+                if success {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    print("Group couldnt be created. Please try again")
+                }
+            })
+        }
     }
     
     @IBAction func closeBtnWasPressed(_ sender: Any) {
@@ -96,7 +110,22 @@ extension CreateGroupVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension CreateGroupVC: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.2) {
+            self.view.frame.origin.y = -200
+        }
+    }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.2) {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 

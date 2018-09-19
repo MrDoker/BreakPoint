@@ -90,4 +90,42 @@ class DataService {
         }
     }
     
+    func getIds(forUsernames usernames: [String], handler: @escaping (_ uidArray: [String]) -> ()) {
+        refUsers.observeSingleEvent(of: .value) { (userDataSnapshot) in
+            var idArray = [String]()
+            guard let userDataSnapshot = userDataSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for user in userDataSnapshot {
+                let email = user.childSnapshot(forPath: "email").value as! String
+                
+                if usernames.contains(email) {
+                    idArray.append(user.key)
+                }
+            }
+            handler(idArray)
+        }
+    }
+    
+    func createGroup(withTitle title: String, andDescription description: String, forUserIds ids: [String], handler: @escaping (_ groupCreated: Bool) -> ()) {
+        refGroups.childByAutoId().updateChildValues(["title": title, "description": description, "members": ids])
+        handler(true)
+    }
+    
+    func getAllGroups(handler: @escaping (_ groupsArray: [Group]) -> ()) {
+        var groupsArray = [Group]()
+        refGroups.observeSingleEvent(of: .value) { (groupDataSnapshot) in
+            guard let groupDataSnapshot = groupDataSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for group in groupDataSnapshot {
+                let memberArray = group.childSnapshot(forPath: "members").value as! [String]
+                if memberArray.contains((Auth.auth().currentUser?.uid)!) {
+                    let title = group.childSnapshot(forPath: "title").value as! String
+                    let description = group.childSnapshot(forPath: "description").value as! String
+                    
+                    let group = Group(groupTtile: title, groupDescription: description, key: group.key, memberCount: memberArray.count, members: memberArray)
+                    groupsArray.append(group)
+                }
+            }
+            handler(groupsArray)
+        }
+    }
+    
 }
