@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		96D219DDFD9657EAEABDB5DC /* Pods_BreakPoint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C82B0A968128547969B61F /* Pods_BreakPoint.framework */; };
 		F9217BD521490B7E0021CF67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9217BD421490B7E0021CF67 /* GoogleService-Info.plist */; };
+		F92D90CB215264B6004E1B32 /* CreateGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92D90CA215264B6004E1B32 /* CreateGroupVC.swift */; };
+		F92D90CD2152696C004E1B32 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92D90CC2152696C004E1B32 /* UserTableViewCell.swift */; };
 		F99250D12148F23200D3E432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99250D02148F23200D3E432 /* AppDelegate.swift */; };
 		F99250D32148F23200D3E432 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99250D22148F23200D3E432 /* FeedVC.swift */; };
 		F99250D52148F23200D3E432 /* GroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99250D42148F23200D3E432 /* GroupsVC.swift */; };
@@ -33,6 +35,8 @@
 		C8C82B0A968128547969B61F /* Pods_BreakPoint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreakPoint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB447B65C0AB79AFBD3522D1 /* Pods-BreakPoint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreakPoint.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BreakPoint/Pods-BreakPoint.debug.xcconfig"; sourceTree = "<group>"; };
 		F9217BD421490B7E0021CF67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F92D90CA215264B6004E1B32 /* CreateGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupVC.swift; sourceTree = "<group>"; };
+		F92D90CC2152696C004E1B32 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		F99250CD2148F23200D3E432 /* BreakPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99250D02148F23200D3E432 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F99250D22148F23200D3E432 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 				F99250D42148F23200D3E432 /* GroupsVC.swift */,
 				F9B2F8D12149658500E4FC6D /* MeVC.swift */,
 				F99F8C5D214FA5AF007BFAF4 /* CreatePostVC.swift */,
+				F92D90CA215264B6004E1B32 /* CreateGroupVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 				F9B2F8CB2149313600E4FC6D /* InsetTextField.swift */,
 				F9B2F8CD214934EE00E4FC6D /* ShadowView.swift */,
 				F99F8C61214FB9F0007BFAF4 /* FeedTableViewCell.swift */,
+				F92D90CC2152696C004E1B32 /* UserTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -290,10 +296,12 @@
 				F9B2F8D22149658500E4FC6D /* MeVC.swift in Sources */,
 				F9B2F8C8214930A600E4FC6D /* AuthVC.swift in Sources */,
 				F99250D52148F23200D3E432 /* GroupsVC.swift in Sources */,
+				F92D90CD2152696C004E1B32 /* UserTableViewCell.swift in Sources */,
 				F9B2F8CA214930E200E4FC6D /* LoginVC.swift in Sources */,
 				F99F8C62214FB9F0007BFAF4 /* FeedTableViewCell.swift in Sources */,
 				F9B2F8D0214948A800E4FC6D /* AuthService.swift in Sources */,
 				F99250D12148F23200D3E432 /* AppDelegate.swift in Sources */,
+				F92D90CB215264B6004E1B32 /* CreateGroupVC.swift in Sources */,
 				F9B2F8CE214934EE00E4FC6D /* ShadowView.swift in Sources */,
 				F99F8C5E214FA5AF007BFAF4 /* CreatePostVC.swift in Sources */,
 				F99250D32148F23200D3E432 /* FeedVC.swift in Sources */,
@@ -449,7 +457,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2QD9NZV8MQ;
 				INFOPLIST_FILE = BreakPoint/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,7 +477,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2QD9NZV8MQ;
 				INFOPLIST_FILE = BreakPoint/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

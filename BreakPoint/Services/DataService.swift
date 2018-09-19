@@ -39,6 +39,17 @@ class DataService {
         refUsers.child(uid).updateChildValues(userData)
     }
     
+    func getUserName(forUID uid: String, handler: @escaping (_ username: String) ->() ) {
+        refUsers.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else {return}
+            for user in userSnapshot {
+                if user.key == uid {
+                    handler(user.childSnapshot(forPath: "email").value as! String)
+                }
+            }
+        }
+    }
+    
     func uploadPost(withMessage message: String, forUID uid: String, withGroupLEy groupKey: String?, sendComplete: @escaping (_ success: Bool) -> () ) {
         
         if groupKey != nil {
@@ -63,6 +74,20 @@ class DataService {
             }
             handler(messageArray)
         })
+    }
+    
+    func getEmail(forSeachQuery query: String, handler: @escaping (_ emailArray: [String]) -> ()) {
+        var emailArray = [String]()
+        refUsers.observe(.value) { (userDataSnapshot) in
+            guard let userDataSnapshot = userDataSnapshot.children.allObjects as? [DataSnapshot] else {return}
+            for user in userDataSnapshot {
+                let email = user.childSnapshot(forPath: "email").value as! String
+                if email.contains(query) && email != Auth.auth().currentUser?.email {
+                    emailArray.append(email)
+                }
+            }
+            handler(emailArray)
+        }
     }
     
 }
