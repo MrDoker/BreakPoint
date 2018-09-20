@@ -30,6 +30,7 @@ class LoginVC: UIViewController {
             if success {
                 self.dismiss(animated: true, completion: nil)
             } else {
+                print("!!!!!!!!!!____loginError_______")
                 print(String(describing: loginError?.localizedDescription))
             }
             
@@ -39,6 +40,7 @@ class LoginVC: UIViewController {
                         self.dismiss(animated: true, completion: nil)
                     })
                 } else {
+                    print("!!!!!!!!!!____RegistrationError_______")
                     print(String(describing: registrationError?.localizedDescription))
                 }
             })
@@ -48,5 +50,4 @@ class LoginVC: UIViewController {
 }
 
 extension LoginVC: UITextFieldDelegate {
-    
 }

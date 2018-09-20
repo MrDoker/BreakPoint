@@ -13,7 +13,6 @@ class AuthVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,7 +29,4 @@ class AuthVC: UIViewController {
     @IBAction func googleSignInBtnWasPressed(_ sender: Any) {
         
     }
-    
-    
-    
 }

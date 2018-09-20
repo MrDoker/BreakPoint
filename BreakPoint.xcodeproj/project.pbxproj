@@ -13,12 +13,15 @@
 		F92D90CD2152696C004E1B32 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92D90CC2152696C004E1B32 /* UserTableViewCell.swift */; };
 		F92D90CF2152AAD2004E1B32 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92D90CE2152AAD2004E1B32 /* GroupTableViewCell.swift */; };
 		F92D90D12152AF0E004E1B32 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92D90D02152AF0E004E1B32 /* Group.swift */; };
+		F93BD04221544073007401CE /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BD04121544073007401CE /* UIViewControllerExt.swift */; };
 		F99250D12148F23200D3E432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99250D02148F23200D3E432 /* AppDelegate.swift */; };
 		F99250D32148F23200D3E432 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99250D22148F23200D3E432 /* FeedVC.swift */; };
 		F99250D52148F23200D3E432 /* GroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99250D42148F23200D3E432 /* GroupsVC.swift */; };
 		F99250D82148F23200D3E432 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F99250D62148F23200D3E432 /* Main.storyboard */; };
 		F99250DA2148F23700D3E432 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F99250D92148F23700D3E432 /* Assets.xcassets */; };
 		F99250DD2148F23700D3E432 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F99250DB2148F23700D3E432 /* LaunchScreen.storyboard */; };
+		F99538162153A291001A97AA /* GroupFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99538152153A291001A97AA /* GroupFeedCell.swift */; };
+		F99538182153A504001A97AA /* GroupFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99538172153A504001A97AA /* GroupFeedVC.swift */; };
 		F99F8C5E214FA5AF007BFAF4 /* CreatePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99F8C5D214FA5AF007BFAF4 /* CreatePostVC.swift */; };
 		F99F8C60214FA9D4007BFAF4 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99F8C5F214FA9D4007BFAF4 /* UIViewExt.swift */; };
 		F99F8C62214FB9F0007BFAF4 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99F8C61214FB9F0007BFAF4 /* FeedTableViewCell.swift */; };
@@ -41,6 +44,7 @@
 		F92D90CC2152696C004E1B32 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		F92D90CE2152AAD2004E1B32 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		F92D90D02152AF0E004E1B32 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		F93BD04121544073007401CE /* UIViewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		F99250CD2148F23200D3E432 /* BreakPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99250D02148F23200D3E432 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F99250D22148F23200D3E432 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 		F99250D92148F23700D3E432 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F99250DC2148F23700D3E432 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F99250DE2148F23700D3E432 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F99538152153A291001A97AA /* GroupFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFeedCell.swift; sourceTree = "<group>"; };
+		F99538172153A504001A97AA /* GroupFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFeedVC.swift; sourceTree = "<group>"; };
 		F99F8C5D214FA5AF007BFAF4 /* CreatePostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostVC.swift; sourceTree = "<group>"; };
 		F99F8C5F214FA9D4007BFAF4 /* UIViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		F99F8C61214FB9F0007BFAF4 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
@@ -101,6 +107,7 @@
 				F9B2F8D12149658500E4FC6D /* MeVC.swift */,
 				F99F8C5D214FA5AF007BFAF4 /* CreatePostVC.swift */,
 				F92D90CA215264B6004E1B32 /* CreateGroupVC.swift */,
+				F99538172153A504001A97AA /* GroupFeedVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -113,6 +120,7 @@
 				F99F8C61214FB9F0007BFAF4 /* FeedTableViewCell.swift */,
 				F92D90CC2152696C004E1B32 /* UserTableViewCell.swift */,
 				F92D90CE2152AAD2004E1B32 /* GroupTableViewCell.swift */,
+				F99538152153A291001A97AA /* GroupFeedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -129,6 +137,7 @@
 		F9217BD22148F55C0021CF67 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F93BD04121544073007401CE /* UIViewControllerExt.swift */,
 				F99F8C5F214FA9D4007BFAF4 /* UIViewExt.swift */,
 			);
 			path = Extensions;
@@ -303,7 +312,10 @@
 				F9B2F8D22149658500E4FC6D /* MeVC.swift in Sources */,
 				F9B2F8C8214930A600E4FC6D /* AuthVC.swift in Sources */,
 				F99250D52148F23200D3E432 /* GroupsVC.swift in Sources */,
+				F93BD04221544073007401CE /* UIViewControllerExt.swift in Sources */,
 				F92D90CD2152696C004E1B32 /* UserTableViewCell.swift in Sources */,
+				F99538182153A504001A97AA /* GroupFeedVC.swift in Sources */,
+				F99538162153A291001A97AA /* GroupFeedCell.swift in Sources */,
 				F9B2F8CA214930E200E4FC6D /* LoginVC.swift in Sources */,
 				F99F8C62214FB9F0007BFAF4 /* FeedTableViewCell.swift in Sources */,
 				F9B2F8D0214948A800E4FC6D /* AuthService.swift in Sources */,

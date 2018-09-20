@@ -18,7 +18,6 @@ class FeedVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,7 +27,6 @@ class FeedVC: UIViewController {
             self.tableView.reloadData()
         }
     }
-    
 }
 
 extension FeedVC: UITableViewDelegate, UITableViewDataSource {
@@ -52,7 +50,5 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
         }
         return UITableViewCell()
     }
-    
-    
 }
 

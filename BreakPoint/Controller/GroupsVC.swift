@@ -29,9 +29,6 @@ class GroupsVC: UIViewController {
             }
         }
     }
-
-    
-
 }
 
 extension GroupsVC: UITableViewDelegate, UITableViewDataSource {
@@ -49,5 +46,10 @@ extension GroupsVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let groupFeedVC = storyboard?.instantiateViewController(withIdentifier: "GroupFeedVC") as? GroupFeedVC else { return }
+        groupFeedVC.initDataForGroup(groupsArray[indexPath.row])
+        presentDetail(groupFeedVC)
+        
+    }
 }
