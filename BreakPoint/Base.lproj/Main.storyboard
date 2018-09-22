@@ -61,7 +61,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="Q61-8n-4mf">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="Q61-8n-4mf" customClass="RoundedImageView" customModule="BreakPoint" customModuleProvider="target">
                                                     <rect key="frame" x="19" y="21" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="B63-uT-60J"/>
@@ -365,7 +365,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bVR-3i-leK">
                                 <rect key="frame" x="0.0" y="70" width="375" height="275"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="F8F-2V-qqx">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="F8F-2V-qqx" customClass="RoundedImageView" customModule="BreakPoint" customModuleProvider="target">
                                         <rect key="frame" x="137.5" y="30" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="H8n-G8-dMr"/>
@@ -373,17 +373,32 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="gsdoker@icloud.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKr-mi-z8K">
-                                        <rect key="frame" x="90" y="150" width="195.5" height="21"/>
+                                        <rect key="frame" x="90" y="175" width="195.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="18"/>
                                         <color key="textColor" red="0.16862745100000001" green="0.63529411759999999" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nbk-Xs-ug0">
+                                        <rect key="frame" x="127.5" y="34" width="120" height="122"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="122" id="9ES-Gx-nfb"/>
+                                            <constraint firstAttribute="width" constant="120" id="Zw4-Ue-dXe"/>
+                                        </constraints>
+                                        <state key="normal" title="Change Image">
+                                            <color key="titleColor" red="0.58823529409999997" green="0.83137254900000002" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeImageBtnWasPressed:" destination="DQl-g2-Cjm" eventType="touchUpInside" id="Iet-qB-o3i"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21960784310000001" green="0.23921568630000001" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Nbk-Xs-ug0" firstAttribute="centerX" secondItem="bVR-3i-leK" secondAttribute="centerX" id="1do-5a-nnc"/>
                                     <constraint firstItem="jKr-mi-z8K" firstAttribute="centerX" secondItem="bVR-3i-leK" secondAttribute="centerX" id="IWW-iL-brL"/>
+                                    <constraint firstItem="Nbk-Xs-ug0" firstAttribute="centerY" secondItem="F8F-2V-qqx" secondAttribute="centerY" constant="15" id="c8z-8z-xM4"/>
                                     <constraint firstItem="F8F-2V-qqx" firstAttribute="top" secondItem="bVR-3i-leK" secondAttribute="top" constant="30" id="ice-aA-GNJ"/>
-                                    <constraint firstItem="jKr-mi-z8K" firstAttribute="top" secondItem="F8F-2V-qqx" secondAttribute="bottom" constant="20" id="ixT-dg-IPr"/>
+                                    <constraint firstItem="jKr-mi-z8K" firstAttribute="top" secondItem="F8F-2V-qqx" secondAttribute="bottom" constant="45" id="ixT-dg-IPr"/>
                                     <constraint firstItem="F8F-2V-qqx" firstAttribute="centerX" secondItem="bVR-3i-leK" secondAttribute="centerX" id="qIF-oL-cJ0"/>
                                     <constraint firstAttribute="height" constant="275" id="yMT-BC-UxY"/>
                                 </constraints>
@@ -427,7 +442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mv-j3-29b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="938"/>
+            <point key="canvasLocation" x="732" y="937.78110944527748"/>
         </scene>
         <!--Group FeedVC-->
         <scene sceneID="HKL-Rz-GLG">

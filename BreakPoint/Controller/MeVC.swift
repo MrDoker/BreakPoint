@@ -11,7 +11,7 @@ import Firebase
 
 class MeVC: UIViewController {
     
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImageView: RoundedImageView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,6 +23,9 @@ class MeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         emailLabel.text = Auth.auth().currentUser?.email
+        DataService.instance.getUserAvatar(forUID: (Auth.auth().currentUser?.uid)!) { (returnedImageURL) in
+            self.profileImageView.loadImageUsingCacheWithUrlString(returnedImageURL)
+        }
     }
 
     @IBAction func signOutButtonWasPressed(_ sender: Any) {
@@ -41,5 +44,30 @@ class MeVC: UIViewController {
         logOutAlert.addAction(cancelAction)
         
         present(logOutAlert, animated: true, completion: nil)
+    }
+    
+    @IBAction func changeImageBtnWasPressed(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+}
+
+extension MeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {return}
+        profileImageView.image = image
+        
+        DataService.instance.uploadUserAvatar(imageData: image.jpegData(compressionQuality: 0.2)!) { (returnedURL) in
+            if returnedURL == nil {
+                //TODO: handle error
+            }
+            DataService.instance.getUserAvatar(forUID: (Auth.auth().currentUser?.uid)!) { (returnedImageURL) in
+                self.profileImageView.loadImageUsingCacheWithUrlString(returnedImageURL)
+            }
+        }
     }
 }

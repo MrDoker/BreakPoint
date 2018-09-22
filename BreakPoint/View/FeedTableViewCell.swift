@@ -10,12 +10,11 @@ import UIKit
 
 class FeedTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImageView: RoundedImageView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     
-    func configCell(profileImage: UIImage, email: String, message: String) {
-        profileImageView.image = profileImage
+    func configCell(email: String, message: String) {
         emailLabel.text = email
         messageLabel.text = message
     }

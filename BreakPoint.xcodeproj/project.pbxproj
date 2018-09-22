@@ -14,6 +14,7 @@
 		F92D90CF2152AAD2004E1B32 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92D90CE2152AAD2004E1B32 /* GroupTableViewCell.swift */; };
 		F92D90D12152AF0E004E1B32 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92D90D02152AF0E004E1B32 /* Group.swift */; };
 		F93BD04221544073007401CE /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BD04121544073007401CE /* UIViewControllerExt.swift */; };
+		F9434FE421550BCC0052230F /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9434FE321550BCC0052230F /* RoundedImageView.swift */; };
 		F99250D12148F23200D3E432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99250D02148F23200D3E432 /* AppDelegate.swift */; };
 		F99250D32148F23200D3E432 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99250D22148F23200D3E432 /* FeedVC.swift */; };
 		F99250D52148F23200D3E432 /* GroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99250D42148F23200D3E432 /* GroupsVC.swift */; };
@@ -45,6 +46,7 @@
 		F92D90CE2152AAD2004E1B32 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		F92D90D02152AF0E004E1B32 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F93BD04121544073007401CE /* UIViewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		F9434FE321550BCC0052230F /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		F99250CD2148F23200D3E432 /* BreakPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99250D02148F23200D3E432 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F99250D22148F23200D3E432 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				F9B2F8CB2149313600E4FC6D /* InsetTextField.swift */,
 				F9B2F8CD214934EE00E4FC6D /* ShadowView.swift */,
+				F9434FE321550BCC0052230F /* RoundedImageView.swift */,
 				F99F8C61214FB9F0007BFAF4 /* FeedTableViewCell.swift */,
 				F92D90CC2152696C004E1B32 /* UserTableViewCell.swift */,
 				F92D90CE2152AAD2004E1B32 /* GroupTableViewCell.swift */,
@@ -315,6 +318,7 @@
 				F93BD04221544073007401CE /* UIViewControllerExt.swift in Sources */,
 				F92D90CD2152696C004E1B32 /* UserTableViewCell.swift in Sources */,
 				F99538182153A504001A97AA /* GroupFeedVC.swift in Sources */,
+				F9434FE421550BCC0052230F /* RoundedImageView.swift in Sources */,
 				F99538162153A291001A97AA /* GroupFeedCell.swift in Sources */,
 				F9B2F8CA214930E200E4FC6D /* LoginVC.swift in Sources */,
 				F99F8C62214FB9F0007BFAF4 /* FeedTableViewCell.swift in Sources */,

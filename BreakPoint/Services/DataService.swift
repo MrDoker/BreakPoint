@@ -10,29 +10,37 @@ import Foundation
 import Firebase
 
 let dbBase = Database.database().reference()
+let storage = Storage.storage().reference()
 
 class DataService {
     static let instance = DataService()
+
+    private(set) public var refBase = dbBase
+    private(set) public var refUsers = dbBase.child("users")
+    private(set) public var refGroups = dbBase.child("groups")
+    private(set) public var refFeed = dbBase.child("feed")
     
-    private var _refBase = dbBase
-    private var _refUsers = dbBase.child("users")
-    private var _refGroups = dbBase.child("groups")
-    private var _refFeed = dbBase.child("feed")
+    private(set) public var storageRef = storage.child("usersAvatars")
     
-    var refBase: DatabaseReference {
-        return _refBase
-    }
-    
-    var refUsers: DatabaseReference {
-        return _refUsers
-    }
-    
-    var refGroups: DatabaseReference {
-        return _refGroups
-    }
-    
-    var refFeed: DatabaseReference {
-        return _refFeed
+    func uploadUserAvatar(imageData: Data, handler: @escaping (_ imageURL: URL?) -> ()) {
+        let userID = Auth.auth().currentUser!.uid
+        let userAvatarRef = storageRef.child("\(userID).jpg")
+        
+        // Upload the file to the path
+        userAvatarRef.putData(imageData, metadata: nil) { (metadata, error) in
+            if error != nil {
+                handler(nil)
+                print(error.debugDescription)
+            }
+            
+            userAvatarRef.downloadURL { (url, error) in
+                guard let downloadedURL = url else { return }
+                self.refUsers.child(userID).updateChildValues(["avatarURL": downloadedURL.absoluteString], withCompletionBlock: { (error, userDatabaseReference) in
+                    ///handle errors
+                    handler(downloadedURL)
+                })
+            }
+        }
     }
     
     func createDBUser(uid: String, userData: [String: Any]) {
@@ -49,6 +57,18 @@ class DataService {
             }
         }
     }
+    
+    func getUserAvatar(forUID uid: String, handler: @escaping (_ avatarURL: String) ->() ) {
+        refUsers.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else {return}
+            for user in userSnapshot {
+                if user.key == uid {
+                    handler(user.childSnapshot(forPath: "avatarURL").value as! String)
+                }
+            }
+        }
+    }
+    
     
     func uploadPost(withMessage message: String, forUID uid: String, withGroupKey groupKey: String?, sendComplete: @escaping (_ success: Bool) -> () ) {
         

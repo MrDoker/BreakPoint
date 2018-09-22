@@ -20,7 +20,7 @@ class AuthService {
                 return
             }
             
-            let userData = ["provider": user.providerID, "email": user.email]
+            let userData = ["provider": user.providerID, "email": user.email, "avatarURL": "https://firebasestorage.googleapis.com/v0/b/breakpoint-6722a.appspot.com/o/usersAvatars%2FdefaultProfileImage%403x.png?alt=media&token=1efc91a8-bc57-4a90-8a2a-7db5575268a7"]
             DataService.instance.createDBUser(uid: user.uid, userData: userData as [String : Any])
             userCreationComplete(true, nil)
         }
