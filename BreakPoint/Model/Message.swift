@@ -18,3 +18,18 @@ class Message {
     }
     
 }
+
+
+class NewMessage {
+    public private(set) var content: String
+    public private(set) var senderEmail: String
+    public private(set) var senderImageURL: String
+    public private(set) var key: String
+    
+    init(content: String, senderEmail: String, senderImageURL: String, key: String) {
+        self.content = content
+        self.senderEmail = senderEmail
+        self.senderImageURL = senderImageURL
+        self.key = key
+    }
+}

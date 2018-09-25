@@ -11,7 +11,7 @@ import Firebase
 
 class CreatePostVC: UIViewController {
 
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImageView: RoundedImageView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var sendButton: UIButton!
@@ -25,6 +25,9 @@ class CreatePostVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         emailLabel.text = Auth.auth().currentUser?.email
+        DataService.instance.getUserAvatar(forUID: (Auth.auth().currentUser?.uid)!) { (returnedURL) in
+            self.profileImageView.loadImageUsingCacheWithUrlString(returnedURL)
+        }
     }
 
     @IBAction func closeButtonWasPressed(_ sender: Any) {

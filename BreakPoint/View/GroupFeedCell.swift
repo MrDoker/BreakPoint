@@ -10,7 +10,7 @@ import UIKit
 
 class GroupFeedCell: UITableViewCell {
 
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImageView: RoundedImageView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     

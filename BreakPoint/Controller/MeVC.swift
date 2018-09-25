@@ -61,7 +61,7 @@ extension MeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate 
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {return}
         profileImageView.image = image
         
-        DataService.instance.uploadUserAvatar(imageData: image.jpegData(compressionQuality: 0.2)!) { (returnedURL) in
+        DataService.instance.uploadUserAvatar(imageData: image.jpegData(compressionQuality: 0.1)!) { (returnedURL) in
             if returnedURL == nil {
                 //TODO: handle error
             }

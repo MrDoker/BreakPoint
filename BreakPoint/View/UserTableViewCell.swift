@@ -10,7 +10,7 @@ import UIKit
 
 class UserTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImageView: RoundedImageView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var checkImageView: UIImageView!
     
@@ -21,6 +21,18 @@ class UserTableViewCell: UITableViewCell {
         }
     }
     
+    func configCell(profileImageURL: String, email: String, isSelected: Bool) {
+        profileImageView.loadImageUsingCacheWithUrlString(profileImageURL)
+        emailLabel.text = email
+        
+        if isSelected {
+            checkImageView.isHidden = false
+        } else {
+            checkImageView.isHidden = true
+        }
+    }
+    
+    /*
     func configCell(profileImage: UIImage, email: String, isSelected: Bool) {
         profileImageView.image = profileImage
         emailLabel.text = email
@@ -31,5 +43,5 @@ class UserTableViewCell: UITableViewCell {
             checkImageView.isHidden = true
         }
     }
-
+     */
 }
