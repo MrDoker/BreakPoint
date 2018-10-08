@@ -21,6 +21,10 @@ class DataService {
     private(set) public var refFeed = dbBase.child("feed")
     private(set) public var storageRef = storage.child("usersAvatars")
     
+    func createDBUser(uid: String, userData: [String: Any]) {
+        refUsers.child(uid).updateChildValues(userData)
+    }
+    
     func uploadUserAvatar(imageData: Data, handler: @escaping (_ imageURL: URL?) -> ()) {
         let userID = Auth.auth().currentUser!.uid
         let userAvatarRef = storageRef.child("\(userID).jpg")
@@ -40,10 +44,6 @@ class DataService {
                 })
             }
         }
-    }
-    
-    func createDBUser(uid: String, userData: [String: Any]) {
-        refUsers.child(uid).updateChildValues(userData)
     }
     
     func getUserName(forUID uid: String, handler: @escaping (_ username: String) ->() ) {
@@ -108,7 +108,7 @@ class DataService {
                 
                 self.getUserName(forUID: senderId) { (email) in
                     self.getUserAvatar(forUID: senderId) { (returnedImageURL) in
-                        let newMessage = NewMessage(content: content, senderEmail: email, senderImageURL: returnedImageURL, key: message.key)
+                        let newMessage = NewMessage(content: content, senderEmail: email, senderImageURL: returnedImageURL, key: message.key, senderID: senderId)
                         messageArray.append(newMessage)
                         if messageArray.count == feedMessageSnapshot.count {
                             handler(messageArray)
@@ -130,7 +130,7 @@ class DataService {
             
             self.getUserName(forUID: senderId, handler: { (email) in
                 self.getUserAvatar(forUID: senderId, handler: { (returnedImageURL) in
-                    let newMessage = NewMessage(content: content, senderEmail: email, senderImageURL: returnedImageURL, key: key ?? "errorKey")
+                    let newMessage = NewMessage(content: content, senderEmail: email, senderImageURL: returnedImageURL, key: key ?? "errorKey", senderID: senderId)
                     handler(newMessage)
                 })
             })
@@ -138,22 +138,75 @@ class DataService {
     }
     
     
-    
-    func getAllMessagesFor(desiredGroup group: Group, handler: @escaping (_ messagesArray: [Message]) -> ()) {
-        var messagesArray = [Message]()
+    //new way
+    func getAllMessagesFor(desiredGroup group: Group, handler: @escaping (_ messagesArray: [NewMessage]) -> ()) {
+        var messagesArray = [NewMessage]()
         
         refGroups.child(group.key).child("messages").observe(.value) { (groupMessagesDataSnapshot) in
             guard let groupMessagesDataSnapshot = groupMessagesDataSnapshot.children.allObjects as? [DataSnapshot] else { return }
             for groupMessage in groupMessagesDataSnapshot {
                 let content = groupMessage.childSnapshot(forPath: "content").value as! String
                 let senderId = groupMessage.childSnapshot(forPath: "senderId").value as! String
+                let key = groupMessage.key
                 
-                let newMessage = Message(content: content, senderId: senderId)
-                messagesArray.append(newMessage)
+                self.getUserName(forUID: senderId, handler: { (email) in
+                    self.getUserAvatar(forUID: senderId, handler: { (returnedImageURL) in
+                        let newMessage = NewMessage(content: content, senderEmail: email, senderImageURL: returnedImageURL, key: key, senderID: senderId)
+                        messagesArray.append(newMessage)
+                        if messagesArray.count == groupMessagesDataSnapshot.count {
+                            handler(messagesArray)
+                        }
+                    })
+                })
             }
-            handler(messagesArray)
         }
     }
+    
+    func getAllMessagesForUser(handler: @escaping (_ feedMessages: [NewMessage], _ groupsMessages: [String: [NewMessage]]) -> ()) {
+        var feedMessages = [NewMessage]()
+        var groupWithMessagesDict = [String: [NewMessage]]()
+        
+        guard let userID = Auth.auth().currentUser?.uid else {return}
+        
+        refFeed.observeSingleEvent(of: .value) { (feedDataSnapshot) in
+            guard let feedMessageSnapshot = feedDataSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for message in feedMessageSnapshot {
+                let senderID = message.childSnapshot(forPath: "senderId").value as! String
+                if userID == senderID {
+                    let content = message.childSnapshot(forPath: "content").value as! String
+                    let newMessage = NewMessage(content: content, senderEmail: "", senderImageURL: "", key: "", senderID: "")
+                    feedMessages.append(newMessage)
+                }
+            }
+
+        }
+        
+        refGroups.observeSingleEvent(of: .value) { (groupDataSnapshot) in
+            guard let groupDataSnapshot = groupDataSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for group in groupDataSnapshot {
+                let memberArray = group.childSnapshot(forPath: "members").value as! [String]
+                if memberArray.contains(userID) {
+                    let title = group.childSnapshot(forPath: "title").value as! String
+                    
+                    var groupMessages = [NewMessage]()
+                    let messagesDataSnapshot = group.childSnapshot(forPath: "messages").children.allObjects as! [DataSnapshot]
+                    for groupMessage in messagesDataSnapshot {
+                        let content = groupMessage.childSnapshot(forPath: "content").value as! String
+                        let senderID = groupMessage.childSnapshot(forPath: "senderId").value as! String
+                        
+                        if senderID == userID {
+                            let newMessage = NewMessage(content: content, senderEmail: "", senderImageURL: "", key: "", senderID: "")
+                            groupMessages.append(newMessage)
+                            //print(groupMessages.count)
+                        }
+                    }
+                    groupWithMessagesDict.updateValue(groupMessages, forKey: title)
+                }
+            }
+            handler(feedMessages, groupWithMessagesDict)
+        }
+    }
+    
     
     func getEmail(forSeachQuery query: String, handler: @escaping (_ emailArray: [String]) -> ()) {
         var emailArray = [String]()

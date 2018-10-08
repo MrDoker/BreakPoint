@@ -21,7 +21,7 @@ class GroupFeedVC: UIViewController {
     
     
     var group: Group?
-    var groupMessages = [Message]()
+    var groupMessages = [NewMessage]()
     
     func initDataForGroup(_ group: Group) {
         self.group = group
@@ -31,7 +31,9 @@ class GroupFeedVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        //sendButtonView.bindToKeyboard()
+        
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableView.automaticDimension
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -115,13 +117,14 @@ extension GroupFeedVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupFeedCell") as? GroupFeedCell else { return GroupFeedCell() }
         
-        let image = UIImage(named: "defaultProfileImage")
         let message = groupMessages[indexPath.row]
-        
-        DataService.instance.getUserName(forUID: message.senderId) { (email) in
-            cell.configCell(profileImage: image ?? UIImage(), email: email, content: message.content)
-        }
+        cell.configCell(profileImageURL: message.senderImageURL, email: message.senderEmail, content: message.content)
         return cell
+        
+        //let image = UIImage(named: "defaultProfileImage")
+        /*DataService.instance.getUserName(forUID: message.senderID) { (email) in
+            cell.configCell(profileImage: image ?? UIImage(), email: email, content: message.content)
+        }*/
     }
     
     

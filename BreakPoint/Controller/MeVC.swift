@@ -14,10 +14,19 @@ class MeVC: UIViewController {
     @IBOutlet weak var profileImageView: RoundedImageView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var placeholderForTableView: UILabel!
     
+    var feedMessages = [NewMessage]()
+    var groupWithMessagesDict = [String: [NewMessage]]()
+    var groupsArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 50
+        tableView.rowHeight = UITableView.automaticDimension
+        configUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +34,29 @@ class MeVC: UIViewController {
         emailLabel.text = Auth.auth().currentUser?.email
         DataService.instance.getUserAvatar(forUID: (Auth.auth().currentUser?.uid)!) { (returnedImageURL) in
             self.profileImageView.loadImageUsingCacheWithUrlString(returnedImageURL)
+        }
+        
+        DataService.instance.getAllMessagesForUser { (feedMessages, groupsMessages) in
+            self.feedMessages = feedMessages
+            self.groupWithMessagesDict = groupsMessages
+            
+            self.groupsArray.removeAll()
+            for key in groupsMessages.keys {
+                self.groupsArray.append(key)
+            }
+            
+            self.configUI()
+            self.tableView.reloadData()
+        }
+    }
+    
+    func configUI() {
+        if feedMessages.count == 0 && groupsArray.count == 0 {
+            tableView.isHidden = true
+            placeholderForTableView.isHidden = false
+        } else {
+            tableView.isHidden = false
+            placeholderForTableView.isHidden = true
         }
     }
 
@@ -69,5 +101,62 @@ extension MeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate 
                 self.profileImageView.loadImageUsingCacheWithUrlString(returnedImageURL)
             }
         }
+    }
+}
+
+extension MeVC: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if feedMessages.count > 0 {
+            return groupsArray.count + 1
+        } else {
+            return groupsArray.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if feedMessages.count == 0 {
+            return groupsArray[section]
+        } else {
+            if section == 0 {
+                return "Messages in Feed"
+            } else {
+                return groupsArray[section - 1]
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if feedMessages.count == 0 {
+            return groupWithMessagesDict[groupsArray[section]]?.count ?? 0
+        } else {
+            if section == 0 {
+                return feedMessages.count
+            } else {
+                return groupWithMessagesDict[groupsArray[section - 1]]?.count ?? 0
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var message = ""
+        
+        if feedMessages.count == 0 {
+            let messageArray = groupWithMessagesDict[groupsArray[indexPath.section]]
+            message = messageArray![indexPath.row].content
+        } else {
+            if indexPath.section == 0 {
+                message = feedMessages[indexPath.row].content
+            } else {
+                let messageArray = groupWithMessagesDict[groupsArray[indexPath.section - 1]]
+                message = messageArray![indexPath.row].content
+            }
+        }
+        
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "MyMessageCell") as? MyMessagesCell {
+            cell.configCellWith(message)
+            return cell
+        }
+        return MyMessagesCell()
     }
 }

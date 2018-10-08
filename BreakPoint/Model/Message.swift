@@ -25,11 +25,13 @@ class NewMessage {
     public private(set) var senderEmail: String
     public private(set) var senderImageURL: String
     public private(set) var key: String
+    public private(set) var senderID: String
     
-    init(content: String, senderEmail: String, senderImageURL: String, key: String) {
+    init(content: String, senderEmail: String, senderImageURL: String, key: String, senderID: String) {
         self.content = content
         self.senderEmail = senderEmail
         self.senderImageURL = senderImageURL
         self.key = key
+        self.senderID = senderID
     }
 }

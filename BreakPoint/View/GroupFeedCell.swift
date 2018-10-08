@@ -14,11 +14,16 @@ class GroupFeedCell: UITableViewCell {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     
-    func configCell(profileImage: UIImage, email: String, content: String) {
+    /*func configCell(profileImage: UIImage, email: String, content: String) {
         profileImageView.image = profileImage
         emailLabel.text = email
         contentLabel.text = content
-    }
+    }*/
     
+    func configCell(profileImageURL: String, email: String, content: String) {
+        profileImageView.loadImageUsingCacheWithUrlString(profileImageURL)
+        emailLabel.text = email
+        contentLabel.text = content
+    }
 
 }
