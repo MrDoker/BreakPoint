@@ -32,7 +32,7 @@ class GroupFeedVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableView.automaticDimension
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -96,7 +96,12 @@ class GroupFeedVC: UIViewController {
         if sendTextField.text != "" {
             sendTextField.isEnabled = false
             sendButton.isEnabled = false
-            DataService.instance.uploadPost(withMessage: sendTextField.text!, forUID: (Auth.auth().currentUser?.uid)!, withGroupKey: group?.key) { (success) in
+            
+            let newFormatter = DateFormatter()
+            newFormatter.dateFormat = "yyyy, MMM d, HH:mm:ss"
+            let sendDate = newFormatter.string(from: Date())
+            
+            DataService.instance.uploadPost(withMessage: sendTextField.text!, forUID: (Auth.auth().currentUser?.uid)!, withGroupKey: group?.key, sendDate: sendDate) { (success) in
                 self.sendTextField.isEnabled = true
                 self.sendTextField.text = ""
                 self.sendButton.isEnabled = true
@@ -118,13 +123,9 @@ extension GroupFeedVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupFeedCell") as? GroupFeedCell else { return GroupFeedCell() }
         
         let message = groupMessages[indexPath.row]
-        cell.configCell(profileImageURL: message.senderImageURL, email: message.senderEmail, content: message.content)
-        return cell
         
-        //let image = UIImage(named: "defaultProfileImage")
-        /*DataService.instance.getUserName(forUID: message.senderID) { (email) in
-            cell.configCell(profileImage: image ?? UIImage(), email: email, content: message.content)
-        }*/
+        cell.configCell(profileImageURL: message.senderImageURL, email: message.senderEmail, content: message.content, sendDate: message.sendDate)
+        return cell
     }
     
     

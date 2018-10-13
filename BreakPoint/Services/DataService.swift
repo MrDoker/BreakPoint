@@ -69,13 +69,13 @@ class DataService {
     }
     
     
-    func uploadPost(withMessage message: String, forUID uid: String, withGroupKey groupKey: String?, sendComplete: @escaping (_ success: Bool) -> () ) {
+    func uploadPost(withMessage message: String, forUID uid: String, withGroupKey groupKey: String?, sendDate: String, sendComplete: @escaping (_ success: Bool) -> () ) {
         
         if groupKey != nil {
-            refGroups.child(groupKey!).child("messages").childByAutoId().updateChildValues(["content": message, "senderId": uid])
+            refGroups.child(groupKey!).child("messages").childByAutoId().updateChildValues(["content": message, "senderId": uid, "sendDate": sendDate])
             sendComplete(true)
         } else {
-            refFeed.childByAutoId().updateChildValues(["content": message, "senderId": uid])
+            refFeed.childByAutoId().updateChildValues(["content": message, "senderId": uid, "sendDate": sendDate])
             sendComplete(true)
         }
     }
@@ -105,10 +105,11 @@ class DataService {
             for message in feedMessageSnapshot {
                 let content = message.childSnapshot(forPath: "content").value as! String
                 let senderId = message.childSnapshot(forPath: "senderId").value as! String
+                let sendDate = message.childSnapshot(forPath: "sendDate").value as! String
                 
                 self.getUserName(forUID: senderId) { (email) in
                     self.getUserAvatar(forUID: senderId) { (returnedImageURL) in
-                        let newMessage = NewMessage(content: content, senderEmail: email, senderImageURL: returnedImageURL, key: message.key, senderID: senderId)
+                        let newMessage = NewMessage(content: content, senderEmail: email, senderImageURL: returnedImageURL, key: message.key, senderID: senderId, sendDate: sendDate)
                         messageArray.append(newMessage)
                         if messageArray.count == feedMessageSnapshot.count {
                             handler(messageArray)
@@ -122,18 +123,20 @@ class DataService {
     func observeFeedForNewMessages(handler: @escaping (_ newMessage: NewMessage) -> ()) {
         refFeed.observe(.value) { (feedDataSnapshot) in
             guard let feedDataSnapshot = feedDataSnapshot.children.allObjects as? [DataSnapshot] else {return}
-            let newMessage = feedDataSnapshot.last
-            
-            let content = newMessage?.childSnapshot(forPath: "content").value as! String
-            let senderId = newMessage?.childSnapshot(forPath: "senderId").value as! String
-            let key = newMessage?.key
-            
-            self.getUserName(forUID: senderId, handler: { (email) in
-                self.getUserAvatar(forUID: senderId, handler: { (returnedImageURL) in
-                    let newMessage = NewMessage(content: content, senderEmail: email, senderImageURL: returnedImageURL, key: key ?? "errorKey", senderID: senderId)
-                    handler(newMessage)
+            if let newMessage = feedDataSnapshot.last {
+                
+                let content = newMessage.childSnapshot(forPath: "content").value as! String
+                let senderId = newMessage.childSnapshot(forPath: "senderId").value as! String
+                let sendDate = newMessage.childSnapshot(forPath: "sendDate").value as! String
+                let key = newMessage.key
+                
+                self.getUserName(forUID: senderId, handler: { (email) in
+                    self.getUserAvatar(forUID: senderId, handler: { (returnedImageURL) in
+                        let newMessage = NewMessage(content: content, senderEmail: email, senderImageURL: returnedImageURL, key: key, senderID: senderId, sendDate: sendDate)
+                        handler(newMessage)
+                    })
                 })
-            })
+            }
         }
     }
     
@@ -147,11 +150,12 @@ class DataService {
             for groupMessage in groupMessagesDataSnapshot {
                 let content = groupMessage.childSnapshot(forPath: "content").value as! String
                 let senderId = groupMessage.childSnapshot(forPath: "senderId").value as! String
+                let sendDate = groupMessage.childSnapshot(forPath: "sendDate").value as! String
                 let key = groupMessage.key
                 
                 self.getUserName(forUID: senderId, handler: { (email) in
                     self.getUserAvatar(forUID: senderId, handler: { (returnedImageURL) in
-                        let newMessage = NewMessage(content: content, senderEmail: email, senderImageURL: returnedImageURL, key: key, senderID: senderId)
+                        let newMessage = NewMessage(content: content, senderEmail: email, senderImageURL: returnedImageURL, key: key, senderID: senderId, sendDate: sendDate)
                         messagesArray.append(newMessage)
                         if messagesArray.count == groupMessagesDataSnapshot.count {
                             handler(messagesArray)
@@ -174,7 +178,7 @@ class DataService {
                 let senderID = message.childSnapshot(forPath: "senderId").value as! String
                 if userID == senderID {
                     let content = message.childSnapshot(forPath: "content").value as! String
-                    let newMessage = NewMessage(content: content, senderEmail: "", senderImageURL: "", key: "", senderID: "")
+                    let newMessage = NewMessage(content: content)
                     feedMessages.append(newMessage)
                 }
             }
@@ -195,7 +199,7 @@ class DataService {
                         let senderID = groupMessage.childSnapshot(forPath: "senderId").value as! String
                         
                         if senderID == userID {
-                            let newMessage = NewMessage(content: content, senderEmail: "", senderImageURL: "", key: "", senderID: "")
+                            let newMessage = NewMessage(content: content)
                             groupMessages.append(newMessage)
                             //print(groupMessages.count)
                         }

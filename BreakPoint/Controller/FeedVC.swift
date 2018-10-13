@@ -19,6 +19,8 @@ class FeedVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 50
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,8 +53,7 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCell") as? FeedTableViewCell {
             let message = newMessagesArray[indexPath.row]
-            cell.configCell(email: message.senderEmail, message: message.content)
-            cell.profileImageView.loadImageUsingCacheWithUrlString(message.senderImageURL)
+            cell.configCell(profileImageURL: message.senderImageURL, email: message.senderEmail, content: message.content, date: message.sendDate)
             return cell
         }
         return UITableViewCell()

@@ -16,6 +16,7 @@
 		F92D90D12152AF0E004E1B32 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92D90D02152AF0E004E1B32 /* Group.swift */; };
 		F93BD04221544073007401CE /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93BD04121544073007401CE /* UIViewControllerExt.swift */; };
 		F9434FE421550BCC0052230F /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9434FE321550BCC0052230F /* RoundedImageView.swift */; };
+		F965EC57216BBEBA00BDF146 /* ViewForGroupsMsg.swift in Sources */ = {isa = PBXBuildFile; fileRef = F965EC56216BBEBA00BDF146 /* ViewForGroupsMsg.swift */; };
 		F99250D12148F23200D3E432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99250D02148F23200D3E432 /* AppDelegate.swift */; };
 		F99250D32148F23200D3E432 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99250D22148F23200D3E432 /* FeedVC.swift */; };
 		F99250D52148F23200D3E432 /* GroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99250D42148F23200D3E432 /* GroupsVC.swift */; };
@@ -49,6 +50,7 @@
 		F92D90D02152AF0E004E1B32 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F93BD04121544073007401CE /* UIViewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		F9434FE321550BCC0052230F /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		F965EC56216BBEBA00BDF146 /* ViewForGroupsMsg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForGroupsMsg.swift; sourceTree = "<group>"; };
 		F99250CD2148F23200D3E432 /* BreakPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F99250D02148F23200D3E432 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F99250D22148F23200D3E432 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				F92D90CE2152AAD2004E1B32 /* GroupTableViewCell.swift */,
 				F99538152153A291001A97AA /* GroupFeedCell.swift */,
 				F926526E216655ED0017020C /* MyMessagesCell.swift */,
+				F965EC56216BBEBA00BDF146 /* ViewForGroupsMsg.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			files = (
 				F99F8C60214FA9D4007BFAF4 /* UIViewExt.swift in Sources */,
 				F92D90CF2152AAD2004E1B32 /* GroupTableViewCell.swift in Sources */,
+				F965EC57216BBEBA00BDF146 /* ViewForGroupsMsg.swift in Sources */,
 				F9B2F8D22149658500E4FC6D /* MeVC.swift in Sources */,
 				F926526F216655ED0017020C /* MyMessagesCell.swift in Sources */,
 				F9B2F8C8214930A600E4FC6D /* AuthVC.swift in Sources */,
