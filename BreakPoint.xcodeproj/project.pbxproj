@@ -36,6 +36,7 @@
 		F9B2F8CE214934EE00E4FC6D /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B2F8CD214934EE00E4FC6D /* ShadowView.swift */; };
 		F9B2F8D0214948A800E4FC6D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B2F8CF214948A800E4FC6D /* AuthService.swift */; };
 		F9B2F8D22149658500E4FC6D /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B2F8D12149658500E4FC6D /* MeVC.swift */; };
+		F9B7ED572183D4C000B22936 /* DownloadImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B7ED562183D4C000B22936 /* DownloadImageHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		F9B2F8CD214934EE00E4FC6D /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		F9B2F8CF214948A800E4FC6D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		F9B2F8D12149658500E4FC6D /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
+		F9B7ED562183D4C000B22936 /* DownloadImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			children = (
 				F9B2F8C5214910A500E4FC6D /* DataService.swift */,
 				F9B2F8CF214948A800E4FC6D /* AuthService.swift */,
+				F9B7ED562183D4C000B22936 /* DownloadImageHelper.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				F93BD04221544073007401CE /* UIViewControllerExt.swift in Sources */,
 				F92D90CD2152696C004E1B32 /* UserTableViewCell.swift in Sources */,
 				F99538182153A504001A97AA /* GroupFeedVC.swift in Sources */,
+				F9B7ED572183D4C000B22936 /* DownloadImageHelper.swift in Sources */,
 				F9434FE421550BCC0052230F /* RoundedImageView.swift in Sources */,
 				F99538162153A291001A97AA /* GroupFeedCell.swift in Sources */,
 				F9B2F8CA214930E200E4FC6D /* LoginVC.swift in Sources */,

@@ -16,7 +16,17 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     
     func configCell(profileImageURL: String, email: String, content: String, date: String) {
-        profileImageView.loadImageUsingCacheWithUrlString(profileImageURL)
+        //profileImageView.image = UIImage(named: "defaultProfileImage")
+        
+        //profileImageView.loadImageUsingCacheWithUrlString(profileImageURL)
+        
+        
+        DownloadImageHelper.instance.loadImageUsingCacheWithUrlString(profileImageURL) { (returnedImage) in
+            self.profileImageView.image = returnedImage
+        }
+        
+        
+        
         emailLabel.text = email
         messageLabel.text = content
         

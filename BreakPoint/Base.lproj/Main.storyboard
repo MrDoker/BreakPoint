@@ -538,6 +538,10 @@
                                                         <constraint firstAttribute="height" constant="50" id="8Fg-G9-yPa"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zN3-r0-pOi">
+                                                    <rect key="frame" x="67" y="15" width="280" height="65"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36e-kj-tit" customClass="ViewForGroupsMsg" customModule="BreakPoint" customModuleProvider="target">
                                                     <rect key="frame" x="69" y="15" width="278" height="65"/>
                                                     <subviews>
@@ -592,6 +596,11 @@
                                                 <constraint firstItem="36e-kj-tit" firstAttribute="bottom" secondItem="Ksh-bf-2gR" secondAttribute="bottom" constant="12" id="sVC-fn-W6z"/>
                                                 <constraint firstItem="Zsi-TT-uWJ" firstAttribute="leading" secondItem="vnD-na-6Cq" secondAttribute="leadingMargin" id="yeH-UE-G39"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="zN3-r0-pOi"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1450980392" green="0.14901960780000001" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
